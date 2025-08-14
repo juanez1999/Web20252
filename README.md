@@ -36,4 +36,59 @@ initialValue → the starting value of the state.
 setCount(prev => prev + 1);
 ```
 
+# Handling Forms in React
+
+## 1. What is Form Handling?
+In React, form handling means managing the values that a user types into input fields, textareas, selects, etc., and deciding what to do with those values (e.g., save them, validate them, send them to a server).
+
+---
+
+## 2. Controlled Components
+React uses the concept of **controlled components** for handling forms.
+- The value of the form field is controlled by React state.
+- Any change in the input updates the state, and the state determines what is displayed in the input.
+
+Example:
+```jsx
+import { useState } from "react";
+
+export default function FormExample() {
+  const [name, setName] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Submitted name: ${name}`);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+- value={name} makes the input controlled by the name state.
+- onChange updates the state whenever the user types.
+- On submit, we prevent the default behavior and use the state value.
+
+```jsx
+User types in input
+       |
+       v
+ onChange event triggered
+       |
+       v
+Update state with new value
+       |
+       v
+React re-renders component
+       |
+       v
+Input shows updated state value
+```
 
