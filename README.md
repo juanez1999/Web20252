@@ -35,6 +35,7 @@ initialValue → the starting value of the state.
 ```jsx
 setCount(prev => prev + 1);
 ```
+---
 
 # Handling Forms in React
 
@@ -91,4 +92,54 @@ React re-renders component
        v
 Input shows updated state value
 ```
+---
+
+# Rendering Lists
+
+## 1. What is Conditional Rendering?
+Conditional rendering means showing different UI elements depending on some condition.
+In React, this is done using JavaScript conditions inside JSX.
+
+Lists are rendered using JavaScript's map() function.
+Syntax:
+```jsx
+const items = ["Apple", "Banana", "Cherry"];
+
+export default function FruitsList() {
+  return (
+    <ul>
+      {items.map((fruit, index) => (
+        <li key={index}>{fruit}</li>
+      ))}
+    </ul>
+  );
+}
+```
+---
+
+We can conditionally render list items based on logic.
+Syntax:
+```jsx
+const items = ["Apple", "Banana", "Cherry"];
+
+export default function FruitsList() {
+  return (
+    <ul>
+      {items.map((fruit, index) =>
+        fruit.startsWith("B") ? (
+          <li key={index}>{fruit}</li>
+        ) : null
+      )}
+    </ul>
+  );
+}
+```
+
+Common Conditional Rendering Patterns: 
+- isLoggedIn && <p>Welcome back!</p>
+- isLoggedIn ? <p>Welcome</p> : <p>Please log in</p>
+- if (!items.length) {
+  return <p>No items found</p>;
+}
+return <ul>{items.map(...)} </ul>;
 
