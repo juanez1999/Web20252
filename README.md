@@ -108,3 +108,25 @@ With **functional components + hooks**, all of this is handled by **`useEffect`*
   - `componentDidMount` → `useEffect(..., [])`
   - `componentDidUpdate` → `useEffect(..., [deps])`
   - `componentWillUnmount` → `return cleanup` inside `useEffect`
+
+## Real-World Product Use Cases
+- Fetching data when building a component
+Example: When you access a user profile in an app like Instagram, useEffect makes an API request to retrieve the profile information.
+
+- Event Subscription
+Example: Listening when the user resizes the window to adjust the layout.
+
+```jsx
+useEffect(() => {
+const handleResize = () => console.log(window.innerWidth);
+window.addEventListener("resize", handleResize);
+
+return () => window.removeEventListener("resize", handleResize);
+}, []);
+```
+
+- Timers and Animations
+Example: Display a banner for a few seconds and then hide it automatically.
+
+- Updating the Browser DOM
+Example: Changing the tab title, notifications, or manipulating external libraries.
