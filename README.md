@@ -95,12 +95,108 @@ Formatear todo el código con Prettier:
 
 ## VS Code Setup (optional but recommended)
 
+1. Use follow extensions:  
+   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)  
+   - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+     
 Create a .vscode/settings.json file in your project with the following settings:
 
-````
+```
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
 ```
+
+---
+
+## Style and Component Libraries in React
+
+A **style and component library** is a set of tools that provides **reusable components** (buttons, modals, menus, forms, etc.) and predefined styles to accelerate interface development.
+They allow you to build applications faster and with a consistent look and feel.
+
+React allows you to use different libraries for **styling** and **UI components**. Here are the most popular ones:
+
+### 1. **Tailwind CSS**
+- Utility-first CSS framework for rapid UI development.
+- Highly customizable and lightweight.
+- **Install**:
+  ```bash
+  npm install -D tailwindcss postcss autoprefixer
+  npx tailwindcss init -p
+  ```
+- Add Tailwind to your `index.css`:
+  ```css
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  ```
+
+---
+
+### 2. **Material UI (MUI)**
+- Google’s Material Design implementation for React.
+- Includes ready-to-use components.
+- **Install**:
+  ```bash
+  npm install @mui/material @emotion/react @emotion/styled
+  ```
+- **Example**:
+  ```jsx
+  import { Button } from '@mui/material';
+
+  function App() {
+    return <Button variant="contained">Click Me</Button>;
+  }
+
+  export default App;
+  ```
+
+---
+
+### 3. **Chakra UI**
+- Simple, modular, and accessible component library.
+- Built-in dark mode support.
+- **Install**:
+  ```bash
+  npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
+  ```
+- **Example**:
+  ```jsx
+  import { Button } from '@chakra-ui/react';
+
+  function App() {
+    return <Button colorScheme="blue">Click Me</Button>;
+  }
+
+  export default App;
+  ```
+
+---
+
+### 4. **Styled Components**
+- CSS-in-JS library.
+- Lets you write CSS inside your JavaScript files.
+- **Install**:
+  ```bash
+  npm install styled-components
+  ```
+- **Example**:
+  ```jsx
+  import styled from 'styled-components';
+
+  const Button = styled.button\`
+    background: blue;
+    color: white;
+    padding: 10px;
+  \`;
+
+  function App() {
+    return <Button>Click Me</Button>;
+  }
+
+  export default App;
+  ```
+
+---
